@@ -1,7 +1,11 @@
+import SideBar from "./app/components/layout/sideBar/SideBar";
+
 const App = () => {
   return (
-    <div>
-      {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
+    <div className="flex h-screen overflow-hidden bg-[#f7f7f5]">
+      <SideBar />
+      
+      <main aria-label="Workspace" className="min-w-0 flex-1" />
     </div>
   );
 };
