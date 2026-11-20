@@ -1,62 +1,73 @@
-import type { Page, VisibleTeamspace } from "../sideBar.types";
-import { activeItemClass, itemClass } from "../sideBarStyles";
-import { Link, NavLink } from "react-router";
 import SideBarMainNav from "./SideBarMainNav";
 import SideBarTeamspaces from "./SideBarTeamspaces";
 import SideBarPrivate from "./SideBarPrivate";
+import { useState } from "react";
+import { FileText } from "lucide-react";
+import type { Page } from "../sideBar.types";
 
 type SideBarNavigationProps = {
   activeItem: string;
   setActiveItem: (id: string) => void;
-  expanded: Set<string>;
-  filteredTeamspaces: VisibleTeamspace[];
-  filteredPrivatePages: Page[];
+  // filteredPrivatePages: Page[];
   normalizedQuery: string;
-  addTeamspace: () => void;
+  privatePages: Page[];
   addPrivatePage: () => void;
-  toggleExpanded: (id: string) => void;
 };
 
 const SideBarNavigation = ({
   activeItem,
   setActiveItem,
-  expanded,
-  filteredTeamspaces,
-  filteredPrivatePages,
   normalizedQuery,
-  addTeamspace,
-  addPrivatePage,
-  toggleExpanded,
-}: SideBarNavigationProps) => (
-  <nav
-    aria-label="Workspace navigation"
-    className="mt-3 min-h-0 flex-1 overflow-y-auto px-3 pb-2 scrollbar-thin [scrollbar-color:#2e2f2d_transparent]"
-  >
-    {/* navItems */}
-    <SideBarMainNav />
+  // toggleExpanded,
+  privatePages,
+  addPrivatePage
+}: SideBarNavigationProps) => {
+  const [expanded, setExpanded] = useState(
+    () => new Set(["design", "private"]),
+  );
 
-    {/* Teamspaces */}
-    <SideBarTeamspaces
-      expanded={expanded}
-      filteredTeamspaces={filteredTeamspaces}
-      normalizedQuery={normalizedQuery}
-      addTeamspace={addTeamspace}
-      toggleExpanded={toggleExpanded}
-      activeItem={activeItem}
-      setActiveItem={setActiveItem}
-    />
+  const toggleExpanded = (id: string) => {
+    setExpanded((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
 
-    {/* Private */}
-    {/* <SideBarPrivate
-      expanded={expanded}
-      filteredPrivatePages={filteredPrivatePages}
-      normalizedQuery={normalizedQuery}
-      addPrivatePage={addPrivatePage}
-      toggleExpanded={toggleExpanded}
-      activeItem={activeItem}
-      setActiveItem={setActiveItem}
-    /> */}
-  </nav>
-);
+  
+
+  return (
+    <nav
+      aria-label="Workspace navigation"
+      className="mt-3 min-h-0 flex-1 overflow-y-auto px-3 pb-2 scrollbar-thin [scrollbar-color:#2e2f2d_transparent]"
+    >
+      {/* navItems */}
+      <SideBarMainNav />
+
+      {/* Teamspaces */}
+      <SideBarTeamspaces
+        expanded={expanded}
+        setExpanded={setExpanded}
+        normalizedQuery={normalizedQuery}
+        toggleExpanded={toggleExpanded}
+        activeItem={activeItem}
+        setActiveItem={setActiveItem}
+      />
+
+      {/* Private */}
+      <SideBarPrivate
+        expanded={expanded}
+        setExpanded={setExpanded}
+        normalizedQuery={normalizedQuery}
+        toggleExpanded={toggleExpanded}
+        activeItem={activeItem}
+        setActiveItem={setActiveItem}
+        privatePages={privatePages}
+        addPrivatePage={addPrivatePage}
+      />
+    </nav>
+  );
+};
 
 export default SideBarNavigation;

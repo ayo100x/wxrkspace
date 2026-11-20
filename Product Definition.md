@@ -1,71 +1,210 @@
-# PRODUCTIVITY AND WORKSPACE PLATFORM
+# WXRKSPACE — PRODUCT DEFINITION
 
 ## 1. Product Overview
 
-A unified productivity and workspace platform designed for individuals and teams to organize information, manage projects, coordinate tasks, collaborate, and automate workflows within a single, organized environment.
+wxrkspace is a collaborative work management platform designed to help individuals and teams plan projects, coordinate responsibilities, organize information, and execute work within one connected environment.
 
-The platform should provide users with the flexibility to create their own personal workspaces or collaborate with others in shared team workspaces.
+The platform provides a structured workspace where users can manage projects, assign and track tasks, collaborate with team members, document important information, and coordinate repeatable workflows.
 
-The goal is to create a centralized environment where knowledge, projects, tasks, people, and workflows are interconnected rather than scattered across different applications.
+Rather than functioning primarily as a general-purpose document editor or a collection of disconnected productivity tools, wxrkspace is built around the lifecycle of work — from planning and organization to execution, collaboration, and completion.
+
+The central objective is to give individuals and teams a clear understanding of:
+
+- What needs to be done.
+- Who is responsible for doing it.
+- How work is progressing.
+- What information and resources are required.
+- What needs attention next.
+
+wxrkspace should provide the flexibility to support different working styles while maintaining a structured foundation for project management and execution.
+
+**Core Product Direction:**
+
+A connected environment where people organize their work, coordinate their teams, manage projects, and turn plans into completed outcomes.
 
 ---
 
-## 2. Core Product Components
+## 2. Core Product Architecture
 
-### 2.1 Workspace
+The platform should be organized around a hierarchy of workspaces, collaborative areas, projects, and their associated resources.
 
-The workspace serves as the primary organizational environment where users manage their work and information.
+### 2.1 Workspaces
+
+A workspace represents the primary organizational environment in which individuals or organizations manage their work.
+
+It provides the foundation for membership, collaboration, resource organization, and access management.
 
 **Core capabilities:**
-- Create personal and team workspaces.
+
+- Create personal and organizational workspaces.
 - Switch between multiple workspaces.
 - Invite members into shared workspaces.
-- Organize workspace content.
+- Manage workspace members and roles.
 - Configure workspace settings.
-- Manage workspace members, roles, and permissions.
-- Support team spaces and personal spaces.
+- Create and manage Teamspaces.
+- Manage workspace-wide permissions.
+- Maintain workspace activity.
 
-### 2.2 Pages and Documents
+A user should be able to maintain a personal workspace while also participating in multiple organizational workspaces.
 
-A flexible content management system that allows users to create, organize, and manage information.
+### 2.2 Teamspaces
 
-Pages should support nested structures, allowing users to create parent pages and subpages.
+Teamspaces are dedicated collaborative environments within a workspace where groups of people organize and manage their work.
+
+They provide a way to separate work according to teams, departments, functions, or other organizational structures.
+
+Examples:
+
+- Engineering.
+- Design.
+- Marketing.
+- Operations.
+- Product.
 
 **Core capabilities:**
-- Create, edit, delete, and organize pages.
-- Create nested pages and subpages.
-- Support rich-text editing.
-- Support headings, paragraphs, lists, checklists, links, images, tables, and code blocks.
-- Support reusable page templates.
-- Allow users to reorder content.
-- Support a block-based editing experience.
+
+- Create and manage Teamspaces.
+- Add and remove members.
+- Configure Teamspace permissions.
+- Create and organize projects.
+- Maintain shared documents and resources.
+- Manage team-related activities.
+- Support collaboration between Teamspace members.
+
+Teamspaces should not be restricted to a particular type of work. An Engineering Teamspace, for example, should be able to contain multiple projects, tasks, technical documents, and other relevant resources.
+
+Projects should also be capable of involving members from multiple Teamspaces where necessary.
+
+### 2.3 Projects
+
+Projects are one of the primary organizational entities in wxrkspace.
+
+A project represents an initiative, objective, or body of work that requires planning, coordination, resources, and execution.
+
+Projects provide a structured environment for bringing together the people, tasks, information, and activities required to accomplish a specific outcome.
+
+**Core capabilities:**
+
+- Create, edit, archive, and manage projects.
+- Define project descriptions and objectives.
+- Assign project owners and members.
+- Set project deadlines and milestones.
+- Organize associated tasks.
+- Track project status and progress.
+- Attach relevant documents and resources.
+- Monitor project activity.
+- Support project discussions and updates.
+- Configure project-level access where necessary.
+
+**Project structure:**
+
+A project should have a dedicated overview containing:
+
+- Project description and objectives.
+- Current status.
+- Project owner and members.
+- Progress indicators.
+- Milestones.
+- Task summaries.
+- Upcoming deadlines.
+- Associated documents.
+- Recent activity.
+
+Projects should be structured application entities rather than ordinary documents with project-related names.
+
+### 2.4 Tasks and Responsibilities
+
+Tasks represent individual units of work that contribute to projects, operational activities, or personal responsibilities.
+
+The task management system should make responsibilities, priorities, deadlines, and progress visible.
+
+**Core capabilities:**
+
+- Create, edit, delete, and manage tasks.
+- Assign tasks to workspace members.
+- Support unassigned tasks.
+- Set priorities and deadlines.
+- Define task statuses.
+- Create subtasks and dependencies.
+- Associate tasks with projects.
+- Add descriptions and supporting information.
+- Add comments and mentions.
+- Track task activity and status changes.
+- Support task filtering, sorting, and searching.
+
+**Initial task statuses:**
+
+- To do.
+- In progress.
+- In review.
+- Completed.
+
+**Initial task views:**
+
+- List view.
+- Board/Kanban view.
+- Calendar view.
+
+The platform should also provide personalized task views so users can see work assigned to them across the workspace without having to navigate through individual projects.
+
+### 2.5 Pages and Documents
+
+Pages and documents provide the knowledge and documentation layer of wxrkspace.
+
+They allow users to create, organize, and maintain information required for projects, teams, and personal work.
+
+Documents should complement project management and collaboration rather than serve as the entire foundation of the application.
+
+**Core capabilities:**
+
+- Create, edit, delete, and organize documents.
+- Support nested pages and subpages.
+- Create project documentation.
+- Maintain Teamspace knowledge resources.
+- Support personal notes and private documents.
+- Provide reusable document templates.
+- Allow content sharing and permissions.
+- Search document contents.
+- Associate documents with projects and other resources.
 
 **Block-based editor:**
 
-Documents should consist of individual content blocks rather than being treated as one large text field.
+Documents should use a block-based editing architecture rather than treating the entire document as one large text field.
 
-Users should be able to:
-- Create individual blocks.
-- Edit and delete blocks.
-- Reorder blocks.
-- Transform blocks between supported types.
-- Move blocks within documents.
-- Organize content using different block types.
+Supported blocks should include:
 
-### 2.3 Databases
+- Headings.
+- Paragraphs.
+- Bulleted and numbered lists.
+- Checklists.
+- Quotes.
+- Links.
+- Images.
+- Tables.
+- Code blocks.
 
-A structured data management system that allows users to create, organize, and display information in different formats.
+Users should be able to create, edit, delete, reorder, and transform supported content blocks.
+
+The editor should provide sufficient flexibility for documentation, notes, meeting records, project briefs, and internal knowledge management without making advanced document customization an initial development priority.
+
+### 2.6 Databases and Structured Data
+
+Databases provide a way to organize information that benefits from structured properties, relationships, and multiple views.
+
+They should support both general-purpose information management and structured project-related data.
 
 **Core capabilities:**
-- Create custom databases.
-- Create, edit, and delete database records.
+
+- Create and manage custom databases.
+- Create, edit, and delete records.
 - Define custom properties and field types.
-- Support relationships between records and other application entities.
-- Filter and sort records.
-- Search database contents.
+- Support relationships between records and application entities.
+- Filter, sort, and search records.
 - Support multiple database views.
+- Associate databases with projects and Teamspaces.
 
 **Initial database views:**
+
 - Table view.
 - Board/Kanban view.
 - Calendar view.
@@ -73,196 +212,119 @@ A structured data management system that allows users to create, organize, and d
 
 The same underlying database should be accessible through different views without duplicating its records.
 
-### 2.4 Collaboration
+Databases should complement the structured project and task systems rather than replace their core functionality.
 
-A collaborative environment that allows individuals and teams to work together.
+### 2.7 Collaboration
+
+Collaboration provides the communication and coordination capabilities required for individuals and teams to work together.
 
 **Core capabilities:**
+
 - Invite and manage workspace members.
-- Assign tasks to team members.
+- Assign responsibilities.
 - Collaborate on projects and documents.
-- Add comments to tasks and pages.
-- Mention other users.
+- Add comments to tasks and documents.
+- Mention other workspace members.
 - Receive notifications.
-- Track workspace and project activity.
+- Track project and workspace activity.
 - Support role-based access control.
 - Maintain activity history.
+- Support shared resources and collaborative editing.
 
-### 2.5 Workflows and Automation
+The goal is to make collaboration contextual, allowing conversations and updates to remain connected to the relevant project, task, or document.
 
-A system for defining, managing, and eventually automating repeatable processes.
+### 2.8 Workflows and Automation
+
+Workflows provide a way to define repeatable processes and organize work through predefined stages.
+
+Automation should eventually reduce manual coordination by allowing actions to occur in response to specific events or conditions.
 
 **Core capabilities:**
-- Create custom workflows.
+
+- Create and manage workflows.
 - Define workflow stages.
-- Configure custom task statuses.
-- Move work between stages.
+- Configure task statuses.
+- Define rules for moving work between stages.
 - Assign responsibilities at different stages.
-- Define triggers and actions.
+- Configure triggers and actions.
 - Automate repetitive operations.
 - Send notifications based on workflow events.
 - Maintain workflow execution history.
 
-Example workflow:
+**Example workflow:**
 
 Idea → Planned → In Progress → Review → Approved → Completed.
 
-Example automation:
+**Example automation:**
 
 When a task moves to Approved:
+
 - Notify the project manager.
-- Record the approval.
+- Record the approval event.
 - Create the next required task.
 - Notify the responsible team member.
 
+Automation should be introduced progressively, beginning with simple event-based actions before developing into a more configurable automation engine.
+
 ---
 
-## 3. Product Structure and Navigation
+## 3. Product Navigation and User Experience
 
-The application should have seven primary navigation areas.
+The application should prioritize access to work, responsibilities, and collaborative environments rather than exposing every resource type as an independent navigation destination.
+
+The recommended primary navigation is:
 
 ### 3.1 Home
 
-A personalized dashboard providing an overview of the user's work.
+A personalized overview of the user's workspace activity and current responsibilities.
 
 **Features:**
-- Personal overview.
-- Recent activity.
+
+- Personal work overview.
 - Assigned tasks.
 - Upcoming deadlines.
-- Recent projects.
-- Recently accessed pages.
+- Active projects.
+- Recent activity.
 - Workspace updates.
-- Notifications.
+- Important notifications.
+- Quick access to frequently used resources.
 
-### 3.2 Projects
+Home should answer: What is happening, and what should I pay attention to?
 
-A centralized environment for organizing and managing projects.
+### 3.2 My Work
 
-**Features:**
-- Create and manage projects.
-- Project overview and descriptions.
-- Project spaces.
-- Project milestones.
-- Associated task boards.
-- Project documentation.
-- Assigned team members.
-- Progress tracking.
-- Project activity.
-
-### 3.3 Pages
-
-A knowledge and documentation environment.
+A centralized view of the user's responsibilities across the workspace.
 
 **Features:**
-- Documents and notes.
-- Knowledge bases.
-- Nested pages and subpages.
-- Rich-text and block-based editor.
-- Page templates.
-- Content organization.
-- Page search.
-- Page sharing and permissions.
 
-### 3.4 Tasks
+- Tasks assigned to the user.
+- Tasks created by the user.
+- Upcoming deadlines.
+- Overdue tasks.
+- Completed tasks.
+- Personal task views.
+- Relevant project context.
 
-A centralized task management environment.
+My Work should allow individuals to manage their responsibilities without navigating through every Teamspace and project.
+
+### 3.3 Inbox
+
+A centralized environment for notifications and items requiring attention.
 
 **Features:**
-- Create and manage tasks.
-- Personal tasks.
-- Assigned tasks.
-- Task descriptions.
-- Subtasks.
-- Due dates and deadlines.
-- Priorities.
-- Custom statuses.
+
 - Task assignments.
-- Comments and activity.
-- Multiple task views.
+- Mentions.
+- Comments and replies.
+- Project updates.
+- Workflow notifications.
+- Collaboration activity.
+- Read and unread states.
 
-### 3.5 Workflows
+### 3.4 Teamspaces
 
-An environment for defining and managing repeatable work processes.
+The primary navigation area for accessing collaborative working environments.
 
-**Features:**
-- Custom workflow creation.
-- Workflow stages.
-- Custom statuses.
-- Process management.
-- Task transitions.
-- Workflow rules.
-- Automation triggers and actions.
-- Execution history.
+Each Teamspace should be expandable and provide access to its projects, documents, databases, and other resources.
 
-### 3.6 Team
-
-A centralized environment for managing workspace members and collaboration.
-
-**Features:**
-- Team members.
-- Member invitations.
-- Member profiles.
-- Roles and permissions.
-- Access management.
-- Team activity.
-- Collaboration settings.
-
-### 3.7 Settings
-
-An environment for managing application, account, and workspace configurations.
-
-**Features:**
-- Account settings.
-- Profile management.
-- Workspace configuration.
-- Workspace members and roles.
-- Security settings.
-- Notification preferences.
-- Subscription and billing management.
-
----
-
-## 4. Target Users
-
-The platform should support two primary usage models.
-
-**Individual users:**
-- Students.
-- Freelancers.
-- Developers.
-- Consultants.
-- Independent professionals.
-- Founders and entrepreneurs.
-
-**Teams and organizations:**
-- Startups.
-- Software development teams.
-- Digital agencies.
-- Small businesses.
-- Project teams.
-- Growing organizations.
-
-Users should be able to operate independently in personal workspaces and collaborate within shared team workspaces.
-
----
-
-## 5. Core Product Philosophy
-
-The platform should be built around five principles:
-
-1. **Organization:** Give users a centralized environment for organizing their information and work.
-2. **Flexibility:** Allow users to structure their workspaces according to their individual or organizational needs.
-3. **Connectivity:** Connect documents, projects, tasks, team members, and workflows.
-4. **Collaboration:** Make it easy for individuals and teams to coordinate and execute work.
-5. **Automation:** Reduce repetitive work through configurable workflows and automation.
-
-The application should feel like one cohesive productivity environment rather than a collection of disconnected tools.
-
----
-
-## 6. Product Vision
-
-Build a flexible, collaborative, and scalable productivity platform that brings knowledge management, project management, task management, team collaboration, and workflow automation into one unified workspace.
-
-The long-term objective is to develop a commercially viable SaaS product that individuals and organizations can rely on to organize their work, manage information, collaborate effectively, and execute projects.
+Users should be able to navigate from a Teamspace into a particular
